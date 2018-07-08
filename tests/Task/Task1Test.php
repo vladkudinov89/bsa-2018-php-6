@@ -57,9 +57,9 @@ class Task1Test extends TestCase
     public function test_currency_repository_find_active()
     {
         $repository = $this->app->make(CurrencyRepositoryInterface::class);
-
+//        dd($repository);
         $currencies = $repository->findActive();
-
+//        dd($currencies);
         $this->assertNotEmpty($currencies);
 
         foreach ($currencies as $currency) {
