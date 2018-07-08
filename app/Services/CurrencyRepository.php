@@ -25,11 +25,24 @@ class CurrencyRepository implements CurrencyRepositoryInterface
 
     public function findActive(): array
     {
-        
+        $arrayFindActive = [];
+        foreach ($this->currencies as $cur){
+            if ($cur->isActive() == true){
+                $arrayFindActive[] = $cur;
+            }
+        }
+        return $arrayFindActive;
     }
 
     public function findById(int $id) : Currency
     {
+//        $arrayFindID = [];
+//        foreach ($this->currencies as $cur){
+//            if ($cur->getId() == $id){
+//                $arrayFindID[] = $cur;
+//            }
+//        }
+//        return $arrayFindID;
 
     }
 
