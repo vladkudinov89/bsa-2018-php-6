@@ -71,7 +71,7 @@ class Task1Test extends TestCase
     public function test_currency_repository_find_by_id_not_found()
     {
         $repository = $this->app->make(CurrencyRepositoryInterface::class);
-
+//        dd($repository);
         $this->assertNull($repository->findById(999999));
     }
 

@@ -27,9 +27,7 @@ class CurrencyRepository implements CurrencyRepositoryInterface
     {
         $arrayFindActive = [];
         foreach ($this->currencies as $cur){
-            if ($cur->isActive() == true){
-                $arrayFindActive[] = $cur;
-            }
+            $cur->isActive() == true ? $arrayFindActive[] = $cur : null;
         }
         return $arrayFindActive;
     }
@@ -38,12 +36,14 @@ class CurrencyRepository implements CurrencyRepositoryInterface
     {
 //        $arrayFindID = [];
 //        foreach ($this->currencies as $cur){
-//            if ($cur->getId() == $id){
-//                $arrayFindID[] = $cur;
+//            if ($cur->getId() === $id){
+//                $arrayFindID = CurrencyPresenter::present($cur);
+//            } else {
+//                $arrayFindID = [];
 //            }
 //        }
 //        return $arrayFindID;
-
+//        return CurrencyPresenter::present(Currency::class);
     }
 
     public function save(Currency $currency): void
