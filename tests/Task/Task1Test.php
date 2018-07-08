@@ -61,7 +61,7 @@ class Task1Test extends TestCase
         $currencies = $repository->findActive();
 
         $this->assertNotEmpty($currencies);
-        
+
         foreach ($currencies as $currency) {
             $this->assertInstanceOf(Currency::class, $currency);
             $this->assertTrue($currency->isActive());
@@ -134,7 +134,7 @@ class Task1Test extends TestCase
                'active'
            ]
         ]);
-    
+
         $responseData = $response->json();
 
         foreach ($responseData as $item) {
