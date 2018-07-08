@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\CurrencyPresenter;
+use App\Services\CurrencyRepository;
 use App\Services\CurrencyRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -27,6 +28,14 @@ class ApiCurrencyController extends Controller
 
     public function getCurrencyByID(int $id)
     {
-        
+        $repositoryID = app(CurrencyRepositoryInterface::class)->findById($id);
+
+        if($repositoryID !== null){
+            return response()->json(CurrencyPresenter::present($repositoryID));
+        } else {
+            return response()->json([
+                'message' => 'Current currency not found'
+            ], 404);
+        }
     }
 }
