@@ -7,12 +7,12 @@ use phpDocumentor\Reflection\Types\Boolean;
 class Currency
 {
     // todo implement
-    public $id;
-    public $name;
-    public $shortName;
-    public $actualCourse;
-    public $actualCourseDate;
-    public $isActive;
+    private $id;
+    private $name;
+    private $shortName;
+    private $actualCourse;
+    private $actualCourseDate;
+    private $isActive;
 
     public function __construct(
         int $id,
@@ -62,4 +62,33 @@ class Currency
     {
         return $this->isActive;
     }
+
+    public function setName($name) : void
+    {
+        $this->name = $name;
+    }
+
+    public function setShortName($shortName) : void
+    {
+        $this->shortName = $shortName;
+    }
+
+    public function setActualCourse($actualCourse) : void
+    {
+        $this->actualCourse = $actualCourse;
+    }
+
+    public function setActualCourseDate($actualCourseDate) : void
+    {
+        $this->actualCourseDate = $actualCourseDate;
+    }
+
+    public function setIsActive($isActive) : void
+    {
+        $this->isActive = $isActive;
+    }
+
+
+
+
 }
