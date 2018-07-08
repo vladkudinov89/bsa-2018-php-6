@@ -14,7 +14,8 @@ class CurrencyRepository implements CurrencyRepositoryInterface
 
     public $currencies;
 
-    public function __construct(array $currencies) {
+    public function __construct(array $currencies)
+    {
         $this->currencies = $currencies;
     }
 
@@ -26,7 +27,7 @@ class CurrencyRepository implements CurrencyRepositoryInterface
     public function findActive(): array
     {
         $arrayFindActive = [];
-        foreach ($this->currencies as $cur){
+        foreach ($this->currencies as $cur) {
             $cur->isActive() == true ? $arrayFindActive[] = $cur : null;
         }
         return $arrayFindActive;
@@ -39,27 +40,41 @@ class CurrencyRepository implements CurrencyRepositoryInterface
             if($cur->getId() == $id){
                 return $cur;
             }
+}
+return null;
+}
+
+public
+function save(Currency $currency): void
+{
+    foreach ($this->currencies as $key => $cur) {
+
+        if ($cur->getId() == $currency->getId()) {
+            $this->currencies[$key] = $currency;
+            return;
+        } else {
+            $this->currencies[] = $currency;
         }
-        return null;
     }
 
-    public function save(Currency $currency): void
-    {
-        foreach ($this->currencies as $key => $cur) {
 
-            if ($cur->getId() == $currency->getId()) {
-                $this->currencies[$key] = $currency;
-                return;
-            } else {
-                $this->currencies[] = $currency;
-            }
+}
+
+public
+function delete(Currency $currency): void
+{
+    foreach ($this->currencies as $key => $cur) {
+        if ($cur->getId() == $currency->getId()) {
+            unset($this->currencies[$key]);
+            return;
         }
-
-        
     }
+}
 
-    public function delete(Currency $currency): void
-    {
-
-    }
+public
+function getLastId() : int
+{
+    $endElementID = end($this->currencies)->getId();
+    return $endElementID + 1;
+}
 }
