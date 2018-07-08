@@ -32,23 +32,30 @@ class CurrencyRepository implements CurrencyRepositoryInterface
         return $arrayFindActive;
     }
 
-    public function findById(int $id) : Currency
+    public function findById(int $id) : ?Currency
     {
-//        $arrayFindID = [];
-//        foreach ($this->currencies as $cur){
-//            if ($cur->getId() === $id){
-//                $arrayFindID = CurrencyPresenter::present($cur);
-//            } else {
-//                $arrayFindID = [];
-//            }
-//        }
-//        return $arrayFindID;
-//        return CurrencyPresenter::present(Currency::class);
+
+        foreach ($this->currencies as $cur){
+            if($cur->getId() == $id){
+                return $cur;
+            }
+        }
+        return null;
     }
 
     public function save(Currency $currency): void
     {
+        foreach ($this->currencies as $key => $cur) {
 
+            if ($cur->getId() == $currency->getId()) {
+                $this->currencies[$key] = $currency;
+                return;
+            } else {
+                $this->currencies[] = $currency;
+            }
+        }
+
+        
     }
 
     public function delete(Currency $currency): void

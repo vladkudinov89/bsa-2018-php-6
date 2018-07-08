@@ -11,7 +11,7 @@ interface CurrencyRepositoryInterface
 
     public function findActive(): array;
 
-    public function findById(int $id): Currency;
+    public function findById(int $id): ?Currency;
 
     public function save(Currency $currency): void;
 

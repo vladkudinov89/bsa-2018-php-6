@@ -24,4 +24,9 @@ class ApiCurrencyController extends Controller
         }
         return response()->json($json_currency);
     }
+
+    public function getCurrencyByID(int $id)
+    {
+        
+    }
 }
